@@ -1,10 +1,12 @@
 import API from './api';
 
 const mockUsers = {
-  'driver@tapngo.com': { id: '1', name: 'John Driver', email: 'driver@tapngo.com', phone: '9876543210', role: 'driver' },
-  'customer@tapngo.com': { id: '2', name: 'Raj Customer', email: 'customer@tapngo.com', phone: '9876543211', role: 'customer' },
-  'admin@tapngo.com': { id: '3', name: 'Admin User', email: 'admin@tapngo.com', phone: '9876543212', role: 'admin' },
-  'merchant@tapngo.com': { id: '4', name: 'Merchant User', email: 'merchant@tapngo.com', phone: '9876543213', role: 'merchant' },
+  'driver@tapngo.com': { id: '1', name: 'John Driver', email: 'driver@tapngo.com', phone: '9876543210', role: 'driver', isVerified: true },
+  'customer@tapngo.com': { id: '2', name: 'Raj Customer', email: 'customer@tapngo.com', phone: '9876543211', role: 'customer', isVerified: true },
+  'admin@tapngo.com': { id: '3', name: 'Admin User', email: 'admin@tapngo.com', phone: '9876543212', role: 'admin', isVerified: true },
+  'merchant@tapngo.com': { id: '4', name: 'Merchant User', email: 'merchant@tapngo.com', phone: '9876543213', role: 'merchant', isVerified: true },
+  'unverified.driver@tapngo.com': { id: '5', name: 'Unverified Driver', email: 'unverified.driver@tapngo.com', phone: '9876543214', role: 'driver', isVerified: false },
+  'unverified.customer@tapngo.com': { id: '6', name: 'Unverified Customer', email: 'unverified.customer@tapngo.com', phone: '9876543215', role: 'customer', isVerified: false },
 };
 
 export const authService = {

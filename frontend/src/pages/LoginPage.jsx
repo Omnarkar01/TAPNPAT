@@ -31,12 +31,19 @@ export default function LoginPage() {
     try {
       if (isLogin) {
         const response = await login(formData.email, formData.password);
-        const route = response.user.role === 'driver' ? '/driver/dashboard' : response.user.role === 'admin' ? '/admin/dashboard' : '/customer/dashboard';
-        navigate(route);
+        if (!response.user.isVerified) {
+          // Redirect to onboarding for unverified users
+          const route = response.user.role === 'driver' ? '/driver/onboarding' : '/customer/onboarding';
+          navigate(route);
+        } else {
+          // Redirect to dashboard for verified users
+          const route = response.user.role === 'driver' ? '/driver/dashboard' : response.user.role === 'admin' ? '/admin/dashboard' : '/customer/dashboard';
+          navigate(route);
+        }
       } else {
         await register(formData);
         const response = await login(formData.email, formData.password);
-        const route = response.user.role === 'driver' ? '/driver/dashboard' : response.user.role === 'admin' ? '/admin/dashboard' : '/customer/dashboard';
+        const route = response.user.role === 'driver' ? '/driver/onboarding' : '/customer/onboarding';
         navigate(route);
       }
     } catch (err) {
@@ -174,11 +181,17 @@ export default function LoginPage() {
 
           {/* Demo Credentials */}
           <div className="mt-8 p-4 bg-cyber-navy border border-cyber-blue/20 rounded-lg">
-            <p className="text-cyber-blue text-sm font-semibold mb-2">Demo Credentials:</p>
-            <div className="text-cyber-gray-light text-xs space-y-1">
+            <p className="text-cyber-blue text-sm font-semibold mb-2">✅ Verified Accounts (Skip Onboarding):</p>
+            <div className="text-cyber-gray-light text-xs space-y-1 mb-4">
               <p><strong>Driver:</strong> driver@tapngo.com / password123</p>
               <p><strong>Customer:</strong> customer@tapngo.com / password123</p>
               <p><strong>Admin:</strong> admin@tapngo.com / password123</p>
+            </div>
+
+            <p className="text-orange-400 text-sm font-semibold mb-2">⏳ Unverified Accounts (Require Onboarding):</p>
+            <div className="text-cyber-gray-light text-xs space-y-1">
+              <p><strong>Driver:</strong> unverified.driver@tapngo.com / password123</p>
+              <p><strong>Customer:</strong> unverified.customer@tapngo.com / password123</p>
             </div>
           </div>
         </div>

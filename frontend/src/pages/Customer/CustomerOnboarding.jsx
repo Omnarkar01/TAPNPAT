@@ -72,6 +72,11 @@ const CustomerOnboarding = () => {
       };
       localStorage.setItem('customerProfile', JSON.stringify(customerProfile));
 
+      // Mark user as verified
+      const user = JSON.parse(localStorage.getItem('user'));
+      user.isVerified = true;
+      localStorage.setItem('user', JSON.stringify(user));
+
       // Use setTimeout to ensure state updates before navigation
       setTimeout(() => {
         navigate('/customer/dashboard', { replace: true });

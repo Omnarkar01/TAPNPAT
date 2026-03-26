@@ -117,6 +117,12 @@ const DriverOnboarding = () => {
         profileComplete: true,
       };
       localStorage.setItem('driverProfile', JSON.stringify(driverProfile));
+
+      // Mark user as verified
+      const user = JSON.parse(localStorage.getItem('user'));
+      user.isVerified = true;
+      localStorage.setItem('user', JSON.stringify(user));
+
       navigate('/driver/dashboard');
     }
   };

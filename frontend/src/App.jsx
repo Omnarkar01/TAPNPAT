@@ -66,24 +66,42 @@ function AppRoutes() {
         <>
           {user.role === 'driver' && (
             <>
-              <Route path="/driver/onboarding" element={<ProtectedRoute requiredRole="driver"><DriverOnboarding /></ProtectedRoute>} />
-              <Route path="/driver/dashboard" element={<ProtectedRoute requiredRole="driver"><DriverDashboard /></ProtectedRoute>} />
-              <Route path="/driver/rides" element={<ProtectedRoute requiredRole="driver"><DriverRides /></ProtectedRoute>} />
-              <Route path="/driver/earnings" element={<ProtectedRoute requiredRole="driver"><DriverEarnings /></ProtectedRoute>} />
-              <Route path="/driver/payment-card" element={<ProtectedRoute requiredRole="driver"><DriverPaymentDisplay /></ProtectedRoute>} />
-              <Route path="/" element={<Navigate to="/driver/onboarding" replace />} />
-              <Route path="*" element={<Navigate to="/driver/onboarding" replace />} />
+              {!user.isVerified ? (
+                <>
+                  <Route path="/driver/onboarding" element={<ProtectedRoute requiredRole="driver"><DriverOnboarding /></ProtectedRoute>} />
+                  <Route path="/" element={<Navigate to="/driver/onboarding" replace />} />
+                  <Route path="*" element={<Navigate to="/driver/onboarding" replace />} />
+                </>
+              ) : (
+                <>
+                  <Route path="/driver/dashboard" element={<ProtectedRoute requiredRole="driver"><DriverDashboard /></ProtectedRoute>} />
+                  <Route path="/driver/rides" element={<ProtectedRoute requiredRole="driver"><DriverRides /></ProtectedRoute>} />
+                  <Route path="/driver/earnings" element={<ProtectedRoute requiredRole="driver"><DriverEarnings /></ProtectedRoute>} />
+                  <Route path="/driver/payment-card" element={<ProtectedRoute requiredRole="driver"><DriverPaymentDisplay /></ProtectedRoute>} />
+                  <Route path="/" element={<Navigate to="/driver/dashboard" replace />} />
+                  <Route path="*" element={<Navigate to="/driver/dashboard" replace />} />
+                </>
+              )}
             </>
           )}
 
           {user.role === 'customer' && (
             <>
-              <Route path="/customer/onboarding" element={<ProtectedRoute requiredRole="customer"><CustomerOnboarding /></ProtectedRoute>} />
-              <Route path="/customer/dashboard" element={<ProtectedRoute requiredRole="customer"><CustomerDashboard /></ProtectedRoute>} />
-              <Route path="/customer/wallet" element={<ProtectedRoute requiredRole="customer"><CustomerWallet /></ProtectedRoute>} />
-              <Route path="/customer/transactions" element={<ProtectedRoute requiredRole="customer"><CustomerTransactions /></ProtectedRoute>} />
-              <Route path="/" element={<Navigate to="/customer/onboarding" replace />} />
-              <Route path="*" element={<Navigate to="/customer/onboarding" replace />} />
+              {!user.isVerified ? (
+                <>
+                  <Route path="/customer/onboarding" element={<ProtectedRoute requiredRole="customer"><CustomerOnboarding /></ProtectedRoute>} />
+                  <Route path="/" element={<Navigate to="/customer/onboarding" replace />} />
+                  <Route path="*" element={<Navigate to="/customer/onboarding" replace />} />
+                </>
+              ) : (
+                <>
+                  <Route path="/customer/dashboard" element={<ProtectedRoute requiredRole="customer"><CustomerDashboard /></ProtectedRoute>} />
+                  <Route path="/customer/wallet" element={<ProtectedRoute requiredRole="customer"><CustomerWallet /></ProtectedRoute>} />
+                  <Route path="/customer/transactions" element={<ProtectedRoute requiredRole="customer"><CustomerTransactions /></ProtectedRoute>} />
+                  <Route path="/" element={<Navigate to="/customer/dashboard" replace />} />
+                  <Route path="*" element={<Navigate to="/customer/dashboard" replace />} />
+                </>
+              )}
             </>
           )}
 
