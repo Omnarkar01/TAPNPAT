@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { Mail, Lock, User, AlertCircle } from 'lucide-react';
+import { Mail, Lock, User, AlertCircle, Truck, ShoppingCart } from 'lucide-react';
 
 export default function LoginPage() {
+  const [selectedRole, setSelectedRole] = useState(null); // null = role selection, 'driver'/'customer' = login/signup
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -63,137 +64,182 @@ export default function LoginPage() {
             <p className="text-cyber-gray-light text-sm">Merchant & Customer Dashboard</p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex gap-4 mb-6">
-            <button
-              onClick={() => {
-                setIsLogin(true);
-                setError('');
-                setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
-              }}
-              className={`flex-1 py-2 rounded font-semibold transition ${
-                isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
-              }`}
-            >
-              Login
-            </button>
-            <button
-              onClick={() => {
-                setIsLogin(false);
-                setError('');
-                setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
-              }}
-              className={`flex-1 py-2 rounded font-semibold transition ${
-                !isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
-              }`}
-            >
-              Register
-            </button>
-          </div>
+          {/* Role Selection Screen */}
+          {!selectedRole ? (
+            <div className="space-y-4">
+              <p className="text-cyber-gray-light text-center mb-6 font-semibold">Choose your role to continue</p>
 
-          {/* Error */}
-          {error && (
-            <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-6 flex gap-2">
-              <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
-              <span>{error}</span>
-            </div>
-          )}
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {!isLogin && (
-              <>
-                <div className="relative">
-                  <User size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required={!isLogin}
-                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                  />
-                </div>
-                <div className="relative">
-                  <Phone size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required={!isLogin}
-                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                  />
-                </div>
-              </>
-            )}
-
-            <div className="relative">
-              <Mail size={20} className="absolute left-3 top-3 text-cyber-blue" />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-              />
-            </div>
-
-            <div className="relative">
-              <Lock size={20} className="absolute left-3 top-3 text-cyber-blue" />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-                className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-              />
-            </div>
-
-            {!isLogin && (
-              <select
-                name="role"
-                value={formData.role}
-                onChange={handleInputChange}
-                className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 px-4 text-cyber-gray-light focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
+              {/* Driver Button */}
+              <button
+                onClick={() => {
+                  setSelectedRole('driver');
+                  setIsLogin(true);
+                  setError('');
+                  setFormData({ email: '', phone: '', name: '', password: '', role: 'driver' });
+                }}
+                className="w-full bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-700 hover:to-cyan-600 text-white py-4 rounded-lg font-bold transition flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl"
               >
-                <option value="customer">Customer</option>
-                <option value="driver">Driver</option>
-                <option value="merchant">Merchant</option>
-                <option value="admin">Admin</option>
-              </select>
-            )}
+                <Truck size={28} />
+                I'm a Driver
+              </button>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-cyber-orange text-cyber-navy py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:opacity-50 transition mt-6"
-            >
-              {isLoading ? 'Loading...' : isLogin ? 'Login' : 'Register'}
-            </button>
-          </form>
+              {/* Customer Button */}
+              <button
+                onClick={() => {
+                  setSelectedRole('customer');
+                  setIsLogin(true);
+                  setError('');
+                  setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
+                }}
+                className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white py-4 rounded-lg font-bold transition flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl"
+              >
+                <ShoppingCart size={28} />
+                I'm a Customer
+              </button>
 
-          {/* Demo Credentials */}
-          <div className="mt-8 p-4 bg-cyber-navy border border-cyber-blue/20 rounded-lg">
-            <p className="text-cyber-blue text-sm font-semibold mb-2">✅ Verified Accounts (Skip Onboarding):</p>
-            <div className="text-cyber-gray-light text-xs space-y-1 mb-4">
-              <p><strong>Driver:</strong> driver@tapngo.com / password123</p>
-              <p><strong>Customer:</strong> customer@tapngo.com / password123</p>
-              <p><strong>Admin:</strong> admin@tapngo.com / password123</p>
+              <p className="text-cyber-gray-dark text-xs text-center mt-6">
+                Admin and Merchant accounts require registration from administrators
+              </p>
             </div>
+          ) : (
+            <>
+              {/* Back Button */}
+              <button
+                onClick={() => {
+                  setSelectedRole(null);
+                  setError('');
+                }}
+                className="mb-6 text-cyber-blue hover:text-cyber-gray-light text-sm font-semibold flex items-center gap-1 transition"
+              >
+                ← Back to Role Selection
+              </button>
 
-            <p className="text-orange-400 text-sm font-semibold mb-2">⏳ Unverified Accounts (Require Onboarding):</p>
-            <div className="text-cyber-gray-light text-xs space-y-1">
-              <p><strong>Driver:</strong> unverified.driver@tapngo.com / password123</p>
-              <p><strong>Customer:</strong> unverified.customer@tapngo.com / password123</p>
-            </div>
-          </div>
+              {/* Tabs */}
+              <div className="flex gap-4 mb-6">
+                <button
+                  onClick={() => {
+                    setIsLogin(true);
+                    setError('');
+                    setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
+                  }}
+                  className={`flex-1 py-2 rounded font-semibold transition ${
+                    isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
+                  }`}
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => {
+                    setIsLogin(false);
+                    setError('');
+                    setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
+                  }}
+                  className={`flex-1 py-2 rounded font-semibold transition ${
+                    !isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
+                  }`}
+                >
+                  Register
+                </button>
+              </div>
+
+              {/* Role Badge */}
+              <div className="mb-6 p-3 bg-cyber-navy border border-cyan-500/30 rounded-lg text-center">
+                <p className="text-cyber-gray-dark text-xs">Signing in as</p>
+                <p className="text-cyber-blue font-bold text-lg capitalize">
+                  {selectedRole === 'driver' ? '🚗 Driver' : '👤 Customer'}
+                </p>
+              </div>
+
+              {/* Error */}
+              {error && (
+                <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-6 flex gap-2">
+                  <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {!isLogin && (
+                  <>
+                    <div className="relative">
+                      <User size={20} className="absolute left-3 top-3 text-cyber-blue" />
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required={!isLogin}
+                        className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
+                      />
+                    </div>
+                    <div className="relative">
+                      <Phone size={20} className="absolute left-3 top-3 text-cyber-blue" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required={!isLogin}
+                        className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
+                      />
+                    </div>
+                  </>
+                )}
+
+                <div className="relative">
+                  <Mail size={20} className="absolute left-3 top-3 text-cyber-blue" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
+                  />
+                </div>
+
+                <div className="relative">
+                  <Lock size={20} className="absolute left-3 top-3 text-cyber-blue" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-cyber-orange text-cyber-navy py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:opacity-50 transition mt-6"
+                >
+                  {isLoading ? 'Loading...' : isLogin ? 'Login' : 'Register'}
+                </button>
+              </form>
+
+              {/* Demo Credentials */}
+              <div className="mt-8 p-4 bg-cyber-navy border border-cyber-blue/20 rounded-lg">
+                <p className="text-cyber-blue text-sm font-semibold mb-2">✅ Verified Accounts (Skip Onboarding):</p>
+                <div className="text-cyber-gray-light text-xs space-y-1 mb-4">
+                  {selectedRole === 'driver' && <p><strong>Driver:</strong> driver@tapngo.com / password123</p>}
+                  {selectedRole === 'customer' && <p><strong>Customer:</strong> customer@tapngo.com / password123</p>}
+                </div>
+
+                <p className="text-orange-400 text-sm font-semibold mb-2">⏳ Unverified Accounts (Require Onboarding):</p>
+                <div className="text-cyber-gray-light text-xs space-y-1">
+                  {selectedRole === 'driver' && <p><strong>Driver:</strong> unverified.driver@tapngo.com / password123</p>}
+                  {selectedRole === 'customer' && <p><strong>Customer:</strong> unverified.customer@tapngo.com / password123</p>}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
