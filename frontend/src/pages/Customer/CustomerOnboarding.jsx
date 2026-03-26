@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, MapPin, Wallet, CheckCircle2 } from 'lucide-react';
+import { Phone, MapPin, Wallet, CheckCircle2, ChevronLeft } from 'lucide-react';
 
 const CustomerOnboarding = () => {
   const navigate = useNavigate();
@@ -366,14 +366,19 @@ const CustomerOnboarding = () => {
           {/* Action Buttons */}
           {step < 3 ? (
             <div className="flex gap-4 mt-8 pt-6 border-t border-slate-700">
-              {step > 1 && (
-                <button
-                  onClick={() => setStep(step - 1)}
-                  className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors"
-                >
-                  Back
-                </button>
-              )}
+              <button
+                onClick={() => {
+                  if (step === 1) {
+                    navigate('/login');
+                  } else {
+                    setStep(step - 1);
+                  }
+                }}
+                className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+              >
+                <ChevronLeft size={20} />
+                {step === 1 ? 'Back to Login' : 'Back'}
+              </button>
               <button
                 onClick={handleNext}
                 className="flex-1 px-6 py-3 bg-gradient-to-r from-cyan-500 to-orange-500 hover:from-cyan-600 hover:to-orange-600 text-white rounded-lg font-semibold transition-colors"
@@ -396,8 +401,9 @@ const CustomerOnboarding = () => {
               <div className="flex gap-4">
                 <button
                   onClick={() => setStep(step - 1)}
-                  className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors"
+                  className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                 >
+                  <ChevronLeft size={20} />
                   Back
                 </button>
                 <button

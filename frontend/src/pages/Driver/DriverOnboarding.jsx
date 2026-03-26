@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, MapPin, Briefcase, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Phone, MapPin, Briefcase, FileText, CheckCircle2, AlertCircle, ChevronLeft } from 'lucide-react';
 
 const DriverOnboarding = () => {
   const navigate = useNavigate();
@@ -561,14 +561,19 @@ const DriverOnboarding = () => {
 
           {/* Action Buttons */}
           <div className="flex gap-4 mt-8 pt-6 border-t border-slate-700">
-            {step > 1 && (
-              <button
-                onClick={() => setStep(step - 1)}
-                className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors"
-              >
-                Back
-              </button>
-            )}
+            <button
+              onClick={() => {
+                if (step === 1) {
+                  navigate('/login');
+                } else {
+                  setStep(step - 1);
+                }
+              }}
+              className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+            >
+              <ChevronLeft size={20} />
+              {step === 1 ? 'Back to Login' : 'Back'}
+            </button>
 
             {step < 5 ? (
               <button
