@@ -42,7 +42,7 @@ export default function AdminUsers() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="min-h-screen bg-soft-mcm-dark">
       <Navbar title="User Management" />
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Filter */}
@@ -53,7 +53,7 @@ export default function AdminUsers() {
               setSelectedRole(e.target.value);
               setPage(1);
             }}
-            className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg py-2 px-4 text-cyber-gray-light focus:outline-none focus:border-cyber-blue"
+            className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg py-2 px-4 text-soft-mcm-light focus:outline-none focus:border-soft-mcm-sage"
           >
             <option value="">All Roles</option>
             <option value="driver">Driver</option>
@@ -64,30 +64,30 @@ export default function AdminUsers() {
         </div>
 
         {/* User Table */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg overflow-hidden backdrop-blur-md">
+        <div className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg overflow-hidden backdrop-blur-md">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-cyber-navy border-b border-cyber-blue/30">
+              <thead className="bg-soft-mcm-dark border-b border-soft-mcm-sage/30">
                 <tr>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Name</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Email</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Phone</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Role</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Joined</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Name</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Email</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Phone</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Role</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Joined</th>
                 </tr>
               </thead>
               <tbody>
                 {users && users.length > 0 ? (
                   users.map((user) => (
-                    <tr key={user._id} className="border-b border-cyber-blue/20 hover:bg-cyber-navy/50 transition">
-                      <td className="p-4 text-cyber-gray-light">{user.name}</td>
-                      <td className="p-4 text-cyber-gray-light text-sm">{user.email}</td>
-                      <td className="p-4 text-cyber-gray-dark text-sm">{user.phone}</td>
+                    <tr key={user._id} className="border-b border-soft-mcm-sage/20 hover:bg-soft-mcm-dark/50 transition">
+                      <td className="p-4 text-soft-mcm-light">{user.name}</td>
+                      <td className="p-4 text-soft-mcm-light text-sm">{user.email}</td>
+                      <td className="p-4 text-soft-mcm-gray text-sm">{user.phone}</td>
                       <td className="p-4">
                         <select
                           value={user.role}
                           onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                          className="bg-cyber-navy border border-cyber-blue/30 rounded py-1 px-2 text-cyber-gray-light text-sm capitalize"
+                          className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded py-1 px-2 text-soft-mcm-light text-sm capitalize"
                         >
                           <option value="driver">Driver</option>
                           <option value="customer">Customer</option>
@@ -95,12 +95,12 @@ export default function AdminUsers() {
                           <option value="admin">Admin</option>
                         </select>
                       </td>
-                      <td className="p-4 text-cyber-gray-dark text-sm">{formatDate(user.createdAt)}</td>
+                      <td className="p-4 text-soft-mcm-gray text-sm">{formatDate(user.createdAt)}</td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="p-8 text-center text-cyber-gray-dark">
+                    <td colSpan="5" className="p-8 text-center text-soft-mcm-gray">
                       No users found
                     </td>
                   </tr>

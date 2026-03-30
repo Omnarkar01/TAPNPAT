@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
+import LoadingSpinner from './components/Shared/LoadingSpinner';
 
 // Pages
 import LandingPage from './pages/LandingPage';
@@ -25,11 +26,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-cyber-navy flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyber-blue"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (!user) {
@@ -48,11 +45,7 @@ function AppRoutes() {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-cyber-navy flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyber-blue"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (

@@ -170,13 +170,13 @@ const DriverOnboarding = () => {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold mb-2 transition-all ${
                     i <= step
-                      ? 'bg-cyan-500 text-white'
+                      ? 'bg-soft-mcm-sage text-white'
                       : 'bg-slate-700 text-gray-400'
                   }`}
                 >
                   {i < step ? <CheckCircle2 size={24} /> : i}
                 </div>
-                <span className={`text-xs text-center ${i <= step ? 'text-cyan-400' : 'text-gray-500'}`}>
+                <span className={`text-xs text-center ${i <= step ? 'text-soft-mcm-sage' : 'text-gray-500'}`}>
                   {i === 1 && 'Personal'}
                   {i === 2 && 'Vehicle'}
                   {i === 3 && 'Banking'}
@@ -188,20 +188,20 @@ const DriverOnboarding = () => {
           </div>
           <div className="h-2 bg-slate-700 rounded-full">
             <div
-              className="h-2 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full transition-all"
+              className="h-2 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose rounded-full transition-all"
               style={{ width: `${(step / 5) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Form Card */}
-        <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-xl border border-soft-mcm-sage/20 rounded-3xl p-8 shadow-2xl">
 
           {/* Step 1: Personal Information */}
           {step === 1 && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <Phone className="text-cyan-400" /> Personal Information
+                <Phone className="text-soft-mcm-sage" /> Personal Information
               </h2>
 
               <div>
@@ -212,7 +212,7 @@ const DriverOnboarding = () => {
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Your full name"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.fullName && <p className="text-red-400 text-sm mt-1">{errors.fullName}</p>}
               </div>
@@ -225,7 +225,7 @@ const DriverOnboarding = () => {
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                   placeholder="10-digit mobile number"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.phoneNumber && <p className="text-red-400 text-sm mt-1">{errors.phoneNumber}</p>}
               </div>
@@ -238,7 +238,7 @@ const DriverOnboarding = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -249,7 +249,7 @@ const DriverOnboarding = () => {
           {step === 2 && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <Briefcase className="text-orange-400" /> Vehicle Information
+                <Briefcase className="text-soft-mcm-rose" /> Vehicle Information
               </h2>
 
               <div>
@@ -258,7 +258,7 @@ const DriverOnboarding = () => {
                   name="vehicleType"
                   value={formData.vehicleType}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white focus:border-soft-mcm-sage focus:outline-none"
                 >
                   <option value="auto">Auto Rickshaw</option>
                   <option value="taxi">Taxi</option>
@@ -274,7 +274,7 @@ const DriverOnboarding = () => {
                   value={formData.vehicleName}
                   onChange={handleInputChange}
                   placeholder="e.g., Bajaj Auto RE"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.vehicleName && <p className="text-red-400 text-sm mt-1">{errors.vehicleName}</p>}
               </div>
@@ -287,7 +287,7 @@ const DriverOnboarding = () => {
                   value={formData.vehicleNumber}
                   onChange={handleInputChange}
                   placeholder="e.g., KA04AB1234"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.vehicleNumber && <p className="text-red-400 text-sm mt-1">{errors.vehicleNumber}</p>}
               </div>
@@ -300,7 +300,7 @@ const DriverOnboarding = () => {
                   value={formData.licenseNumber}
                   onChange={handleInputChange}
                   placeholder="Driver's License Number"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.licenseNumber && <p className="text-red-400 text-sm mt-1">{errors.licenseNumber}</p>}
               </div>
@@ -328,7 +328,7 @@ const DriverOnboarding = () => {
                   value={formData.gpayUPI}
                   onChange={handleInputChange}
                   placeholder="name@bankname"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.gpayUPI && <p className="text-red-400 text-sm mt-1">{errors.gpayUPI}</p>}
               </div>
@@ -341,7 +341,7 @@ const DriverOnboarding = () => {
                   value={formData.accountHolderName}
                   onChange={handleInputChange}
                   placeholder="As per bank records"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.accountHolderName && <p className="text-red-400 text-sm mt-1">{errors.accountHolderName}</p>}
               </div>
@@ -355,7 +355,7 @@ const DriverOnboarding = () => {
                     value={formData.bankName}
                     onChange={handleInputChange}
                     placeholder="e.g., HDFC Bank"
-                    className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                    className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                   />
                   {errors.bankName && <p className="text-red-400 text-sm mt-1">{errors.bankName}</p>}
                 </div>
@@ -368,7 +368,7 @@ const DriverOnboarding = () => {
                     value={formData.ifscCode}
                     onChange={handleInputChange}
                     placeholder="e.g., HDFC0000001"
-                    className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none uppercase"
+                    className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none uppercase"
                   />
                   {errors.ifscCode && <p className="text-red-400 text-sm mt-1">{errors.ifscCode}</p>}
                 </div>
@@ -382,7 +382,7 @@ const DriverOnboarding = () => {
                   value={formData.accountNumber}
                   onChange={handleInputChange}
                   placeholder="Your bank account number"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.accountNumber && <p className="text-red-400 text-sm mt-1">{errors.accountNumber}</p>}
               </div>
@@ -393,7 +393,7 @@ const DriverOnboarding = () => {
           {step === 4 && (
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <MapPin className="text-orange-400" /> Location Details
+                <MapPin className="text-soft-mcm-rose" /> Location Details
               </h2>
 
               <div>
@@ -404,7 +404,7 @@ const DriverOnboarding = () => {
                   value={formData.city}
                   onChange={handleInputChange}
                   placeholder="e.g., Bangalore"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.city && <p className="text-red-400 text-sm mt-1">{errors.city}</p>}
               </div>
@@ -417,7 +417,7 @@ const DriverOnboarding = () => {
                   value={formData.state}
                   onChange={handleInputChange}
                   placeholder="e.g., Karnataka"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.state && <p className="text-red-400 text-sm mt-1">{errors.state}</p>}
               </div>
@@ -430,7 +430,7 @@ const DriverOnboarding = () => {
                   onChange={handleInputChange}
                   placeholder="Street address, locality"
                   rows="3"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.address && <p className="text-red-400 text-sm mt-1">{errors.address}</p>}
               </div>
@@ -443,7 +443,7 @@ const DriverOnboarding = () => {
                   value={formData.zipCode}
                   onChange={handleInputChange}
                   placeholder="6-digit postal code"
-                  className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none"
                 />
                 {errors.zipCode && <p className="text-red-400 text-sm mt-1">{errors.zipCode}</p>}
               </div>
@@ -461,11 +461,11 @@ const DriverOnboarding = () => {
               <div className={`border rounded-lg p-4 transition-all ${
                 verified.phone
                   ? 'bg-emerald-500/10 border-emerald-500/30'
-                  : 'bg-slate-800/50 border-cyan-500/20'
+                  : 'bg-slate-800/50 border-soft-mcm-sage/20'
               }`}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <Phone size={20} className={verified.phone ? 'text-emerald-400' : 'text-cyan-400'} />
+                    <Phone size={20} className={verified.phone ? 'text-emerald-400' : 'text-soft-mcm-sage'} />
                     <div>
                       <p className="font-semibold text-white">Phone Number Verification</p>
                       <p className="text-sm text-gray-400">+91 {formData.phoneNumber}</p>
@@ -479,7 +479,7 @@ const DriverOnboarding = () => {
                     {!showPhoneOTP ? (
                       <button
                         onClick={() => setShowPhoneOTP(true)}
-                        className="w-full mt-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-colors"
+                        className="w-full mt-2 px-4 py-2 bg-soft-mcm-sage hover:bg-soft-mcm-sage-dark text-white rounded-lg font-semibold transition-colors"
                       >
                         Send OTP
                       </button>
@@ -490,7 +490,7 @@ const DriverOnboarding = () => {
                           value={otp}
                           onChange={(e) => setOtp(e.target.value)}
                           placeholder="Enter 6-digit OTP (try 123456)"
-                          className="w-full px-4 py-2 bg-slate-900 border border-cyan-500/20 rounded-lg text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none text-center tracking-wider"
+                          className="w-full px-4 py-2 bg-slate-900 border border-soft-mcm-sage/20 rounded-lg text-white placeholder-gray-500 focus:border-soft-mcm-sage focus:outline-none text-center tracking-wider"
                         />
                         {errors.otp && <p className="text-red-400 text-sm">{errors.otp}</p>}
                         <button
@@ -509,11 +509,11 @@ const DriverOnboarding = () => {
               <div className={`border rounded-lg p-4 transition-all ${
                 verified.bank
                   ? 'bg-emerald-500/10 border-emerald-500/30'
-                  : 'bg-slate-800/50 border-cyan-500/20'
+                  : 'bg-slate-800/50 border-soft-mcm-sage/20'
               }`}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <Briefcase size={20} className={verified.bank ? 'text-emerald-400' : 'text-cyan-400'} />
+                    <Briefcase size={20} className={verified.bank ? 'text-emerald-400' : 'text-soft-mcm-sage'} />
                     <div>
                       <p className="font-semibold text-white">Bank Account Verification</p>
                       <p className="text-sm text-gray-400">{formData.bankName} • ****{formData.accountNumber?.slice(-4)}</p>
@@ -525,7 +525,7 @@ const DriverOnboarding = () => {
                 {!verified.bank && (
                   <button
                     onClick={simulateBankVerification}
-                    className="w-full mt-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-semibold transition-colors"
+                    className="w-full mt-2 px-4 py-2 bg-soft-mcm-sage hover:bg-soft-mcm-sage-dark text-white rounded-lg font-semibold transition-colors"
                   >
                     Verify Bank Account
                   </button>
@@ -540,10 +540,10 @@ const DriverOnboarding = () => {
                     name="termsAccepted"
                     checked={formData.termsAccepted}
                     onChange={handleInputChange}
-                    className="mt-1 w-5 h-5 rounded border-cyan-500/30 bg-slate-800 accent-cyan-500"
+                    className="mt-1 w-5 h-5 rounded border-soft-mcm-sage/30 bg-slate-800 accent-soft-mcm-sage"
                   />
                   <span className="text-gray-300 text-sm">
-                    I accept the <a href="#" className="text-cyan-400 hover:underline">Terms & Conditions</a> and <a href="#" className="text-cyan-400 hover:underline">Service Agreement</a>
+                    I accept the <a href="#" className="text-soft-mcm-sage hover:underline">Terms & Conditions</a> and <a href="#" className="text-soft-mcm-sage hover:underline">Service Agreement</a>
                   </span>
                 </label>
                 {errors.termsAccepted && <p className="text-red-400 text-sm">{errors.termsAccepted}</p>}
@@ -554,10 +554,10 @@ const DriverOnboarding = () => {
                     name="dataPrivacyAccepted"
                     checked={formData.dataPrivacyAccepted}
                     onChange={handleInputChange}
-                    className="mt-1 w-5 h-5 rounded border-cyan-500/30 bg-slate-800 accent-cyan-500"
+                    className="mt-1 w-5 h-5 rounded border-soft-mcm-sage/30 bg-slate-800 accent-soft-mcm-sage"
                   />
                   <span className="text-gray-300 text-sm">
-                    I accept the <a href="#" className="text-cyan-400 hover:underline">Privacy Policy</a> and understand how my data will be used
+                    I accept the <a href="#" className="text-soft-mcm-sage hover:underline">Privacy Policy</a> and understand how my data will be used
                   </span>
                 </label>
                 {errors.dataPrivacyAccepted && <p className="text-red-400 text-sm">{errors.dataPrivacyAccepted}</p>}
@@ -575,7 +575,7 @@ const DriverOnboarding = () => {
                   setStep(step - 1);
                 }
               }}
-              className="flex-1 px-6 py-3 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-3 border border-soft-mcm-sage/30 text-soft-mcm-sage hover:bg-soft-mcm-sage-dark/10 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
             >
               <ChevronLeft size={20} />
               {step === 1 ? 'Back to Login' : 'Back'}
@@ -584,14 +584,14 @@ const DriverOnboarding = () => {
             {step < 5 ? (
               <button
                 onClick={handleNext}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-cyan-500 to-orange-500 hover:from-cyan-600 hover:to-orange-600 text-white rounded-lg font-semibold transition-colors"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark text-white rounded-lg font-semibold transition-colors"
               >
                 Next: Step {step + 1}
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-soft-mcm-sage hover:from-emerald-600 hover:to-soft-mcm-sage text-white rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 <CheckCircle2 size={20} />
                 Complete Profile & Start

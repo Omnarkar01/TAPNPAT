@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Shared/Navbar';
-import { User, Mail, Phone, MapPin, Check, X } from 'lucide-react';
+import { User, MapPin, Check, X } from 'lucide-react';
 
 export default function CustomerProfile() {
-  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
-  const [userInfo, setUserInfo] = useState(null);
   const [customerProfile, setCustomerProfile] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -23,7 +20,6 @@ export default function CustomerProfile() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const profile = JSON.parse(localStorage.getItem('customerProfile') || '{}');
 
-    setUserInfo(user);
     setCustomerProfile(profile);
 
     setFormData({
@@ -66,15 +62,15 @@ export default function CustomerProfile() {
   };
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="min-h-screen bg-soft-mcm-dark">
       <Navbar title="Customer Profile" />
 
       <main className="max-w-4xl mx-auto px-6 py-8">
         {message && (
-          <div className={`mb-6 p-4 rounded-lg flex items-center gap-2 ${
+          <div className={`mb-6 p-4 rounded-lg flex items-center gap-2 font-medium ${
             message.includes('successfully')
-              ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300'
-              : 'bg-red-500/10 border border-red-500/30 text-red-300'
+              ? 'bg-soft-mcm-sage/15 border border-soft-mcm-sage/40 text-soft-mcm-sage'
+              : 'bg-red-500/15 border border-red-500/40 text-red-300'
           }`}>
             {message.includes('successfully') ? (
               <Check size={20} />
@@ -86,21 +82,21 @@ export default function CustomerProfile() {
         )}
 
         {/* Profile Header */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-8 mb-6">
+        <div className="bg-soft-mcm-dark/80 border border-gray-700 rounded-xl p-8 mb-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-cyan-500 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-soft-mcm-sage to-soft-mcm-rose rounded-full flex items-center justify-center shadow-lg shadow-soft-mcm-sage/30">
                 <User size={32} className="text-white" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-white">{formData.fullName || 'Customer Name'}</h2>
-                <p className="text-cyber-gray-light">✅ Verified Customer</p>
+                <p className="text-soft-mcm-sage font-medium">✅ Verified Customer</p>
               </div>
             </div>
             {!isEditing && (
               <button
                 onClick={() => setIsEditing(true)}
-                className="px-6 py-2 bg-cyber-orange hover:bg-orange-600 text-cyber-navy font-semibold rounded-lg transition"
+                className="px-6 py-2 bg-soft-mcm-rose hover:bg-soft-mcm-rose-dark text-white font-semibold rounded-lg transition-colors shadow-lg shadow-soft-mcm-rose/30"
               >
                 Edit Profile
               </button>
@@ -111,48 +107,48 @@ export default function CustomerProfile() {
         {/* Profile Sections */}
         <div className="space-y-6">
           {/* Personal Information */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark/80 border border-gray-700 rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <User size={24} className="text-cyber-blue" />
+              <User size={24} className="text-soft-mcm-sage" />
               Personal Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Full Name</label>
+                <label className="block text-gray-300 text-sm font-medium mb-2">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark/60 border border-gray-600 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none focus:ring-2 focus:ring-soft-mcm-sage/30' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Email</label>
+                <label className="block text-gray-300 text-sm font-medium mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark/60 border border-gray-600 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none focus:ring-2 focus:ring-soft-mcm-sage/30' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-cyber-gray-light text-sm mb-2">Phone Number</label>
+                <label className="block text-gray-300 text-sm font-medium mb-2">Phone Number</label>
                 <input
                   type="tel"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark/60 border border-gray-600 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none focus:ring-2 focus:ring-soft-mcm-sage/30' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -160,35 +156,35 @@ export default function CustomerProfile() {
           </section>
 
           {/* Location & Address */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark/80 border border-gray-700 rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <MapPin size={24} className="text-cyber-orange" />
+              <MapPin size={24} className="text-soft-mcm-rose" />
               Location Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">City</label>
+                <label className="block text-gray-300 text-sm font-medium mb-2">City</label>
                 <input
                   type="text"
                   name="city"
                   value={formData.city}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark/60 border border-gray-600 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none focus:ring-2 focus:ring-soft-mcm-sage/30' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">State</label>
+                <label className="block text-gray-300 text-sm font-medium mb-2">State</label>
                 <input
                   type="text"
                   name="state"
                   value={formData.state}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark/60 border border-gray-600 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none focus:ring-2 focus:ring-soft-mcm-sage/30' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -196,10 +192,10 @@ export default function CustomerProfile() {
           </section>
 
           {/* Profile Info */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark/80 border border-gray-700 rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4">Account Status</h3>
-            <div className="space-y-2 text-cyber-gray-light">
-              <p><strong>Status:</strong> ✅ Verified & Active</p>
+            <div className="space-y-2 text-gray-300">
+              <p><strong>Status:</strong> <span className="text-soft-mcm-sage font-medium">✅ Verified & Active</span></p>
               <p><strong>Account Created:</strong> {new Date(customerProfile?.createdAt || Date.now()).toLocaleDateString()}</p>
               {customerProfile?.updatedAt && (
                 <p><strong>Last Updated:</strong> {new Date(customerProfile.updatedAt).toLocaleDateString()}</p>
@@ -213,13 +209,13 @@ export default function CustomerProfile() {
               <button
                 onClick={handleSave}
                 disabled={isSaving}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white rounded-lg font-semibold transition disabled:opacity-50"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark text-white rounded-lg font-semibold transition-colors disabled:opacity-50 shadow-lg shadow-soft-mcm-sage/30"
               >
                 {isSaving ? 'Saving...' : 'Save Changes'}
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="flex-1 px-6 py-3 border border-cyber-blue/30 text-cyber-blue hover:bg-cyber-blue/10 rounded-lg font-semibold transition"
+                className="flex-1 px-6 py-3 border border-gray-600 text-gray-300 hover:bg-gray-700/40 rounded-lg font-semibold transition-colors"
               >
                 Cancel
               </button>

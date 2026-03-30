@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { Mail, Lock, User, AlertCircle, Truck, ShoppingCart } from 'lucide-react';
+import { Mail, Lock, User, AlertCircle, Truck, ShoppingCart, ArrowLeft, Sparkles } from 'lucide-react';
 
 export default function LoginPage() {
   const [selectedRole, setSelectedRole] = useState(null); // null = role selection, 'driver'/'customer' = login/signup
@@ -54,201 +54,219 @@ export default function LoginPage() {
     }
   };
 
+  const roleLabel = selectedRole === 'driver' ? 'Driver' : 'Customer';
+
   return (
-    <div className="min-h-screen bg-cyber-navy flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-8 backdrop-blur-md">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-cyber-orange mb-2">tapNGo</h1>
-            <p className="text-cyber-gray-light text-sm">Merchant & Customer Dashboard</p>
-          </div>
-
-          {/* Role Selection Screen */}
-          {!selectedRole ? (
-            <div className="space-y-4">
-              {/* Back to Landing Button */}
-              <button
-                type="button"
-                onClick={() => navigate('/')}
-                className="mb-4 px-3 py-2 text-cyber-blue hover:text-cyber-gray-light hover:bg-cyber-navy/50 text-sm font-semibold flex items-center gap-1 transition rounded"
-              >
-                ← Back to Home
-              </button>
-
-              <p className="text-cyber-gray-light text-center mb-6 font-semibold">Choose your role to continue</p>
-
-              {/* Driver Button */}
-              <button
-                onClick={() => {
-                  setSelectedRole('driver');
-                  setIsLogin(true);
-                  setError('');
-                  setFormData({ email: '', phone: '', name: '', password: '', role: 'driver' });
-                }}
-                className="w-full bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-700 hover:to-cyan-600 text-white py-4 rounded-lg font-bold transition flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl"
-              >
-                <Truck size={28} />
-                I'm a Driver
-              </button>
-
-              {/* Customer Button */}
-              <button
-                onClick={() => {
-                  setSelectedRole('customer');
-                  setIsLogin(true);
-                  setError('');
-                  setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
-                }}
-                className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white py-4 rounded-lg font-bold transition flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl"
-              >
-                <ShoppingCart size={28} />
-                I'm a Customer
-              </button>
-
-              <p className="text-cyber-gray-dark text-xs text-center mt-6">
-                Admin and Merchant accounts require registration from administrators
-              </p>
-            </div>
-          ) : (
-            <>
-              {/* Back to Landing Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  navigate('/');
-                }}
-                className="mb-6 px-3 py-2 text-cyber-blue hover:text-cyber-gray-light hover:bg-cyber-navy/50 text-sm font-semibold flex items-center gap-1 transition rounded"
-              >
-                ← Back to Home
-              </button>
-
-              {/* Tabs */}
-              <div className="flex gap-4 mb-6">
-                <button
-                  onClick={() => {
-                    setIsLogin(true);
-                    setError('');
-                    setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
-                  }}
-                  className={`flex-1 py-2 rounded font-semibold transition ${
-                    isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
-                  }`}
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => {
-                    setIsLogin(false);
-                    setError('');
-                    setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
-                  }}
-                  className={`flex-1 py-2 rounded font-semibold transition ${
-                    !isLogin ? 'bg-cyber-orange text-cyber-navy' : 'bg-cyber-navy-light text-cyber-gray-light border border-cyber-blue/30'
-                  }`}
-                >
-                  Register
-                </button>
-              </div>
-
-              {/* Role Badge */}
-              <div className="mb-6 p-3 bg-cyber-navy border border-cyan-500/30 rounded-lg text-center">
-                <p className="text-cyber-gray-dark text-xs">Signing in as</p>
-                <p className="text-cyber-blue font-bold text-lg capitalize">
-                  {selectedRole === 'driver' ? '🚗 Driver' : '👤 Customer'}
+    <div className="app-shell flex items-center justify-center px-4 py-8 sm:px-6">
+      <div className="w-full max-w-5xl">
+        <div className="surface-card overflow-hidden">
+          <div className="grid lg:grid-cols-[1.05fr_1fr]">
+            <aside className="hidden lg:flex flex-col justify-between border-r border-soft-mcm-sage/25 bg-gradient-to-br from-soft-mcm-sage/15 via-transparent to-soft-mcm-rose/15 p-10">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-soft-mcm-sage/40 bg-soft-mcm-sage/10 px-3 py-1 text-xs font-semibold text-soft-mcm-sage mb-6">
+                  <Sparkles size={14} />
+                  Smart Transit Payments
+                </div>
+                <h1 className="text-4xl font-bold text-soft-mcm-light leading-tight mb-4">Welcome to tapNGo</h1>
+                <p className="text-soft-mcm-gray max-w-md">
+                  One place for quick ride payments, wallet tracking, and verified digital transactions.
                 </p>
               </div>
 
-              {/* Error */}
-              {error && (
-                <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-6 flex gap-2">
-                  <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
-                  <span>{error}</span>
-                </div>
-              )}
-
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {!isLogin && (
-                  <>
-                    <div className="relative">
-                      <User size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required={!isLogin}
-                        className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                      />
-                    </div>
-                    <div className="relative">
-                      <Phone size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        required={!isLogin}
-                        className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                      />
-                    </div>
-                  </>
-                )}
-
-                <div className="relative">
-                  <Mail size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                  />
-                </div>
-
-                <div className="relative">
-                  <Lock size={20} className="absolute left-3 top-3 text-cyber-blue" />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full bg-cyber-navy border border-cyber-blue/30 rounded-lg py-3 pl-10 pr-4 text-cyber-gray-light placeholder-cyber-gray-dark focus:outline-none focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-cyber-orange text-cyber-navy py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:opacity-50 transition mt-6"
-                >
-                  {isLoading ? 'Loading...' : isLogin ? 'Login' : 'Register'}
-                </button>
-              </form>
-
-              {/* Demo Credentials */}
-              <div className="mt-8 p-4 bg-cyber-navy border border-cyber-blue/20 rounded-lg">
-                <p className="text-cyber-blue text-sm font-semibold mb-2">✅ Verified Accounts (Skip Onboarding):</p>
-                <div className="text-cyber-gray-light text-xs space-y-1 mb-4">
-                  {selectedRole === 'driver' && <p><strong>Driver:</strong> driver@tapngo.com / password123</p>}
-                  {selectedRole === 'customer' && <p><strong>Customer:</strong> customer@tapngo.com / password123</p>}
-                </div>
-
-                <p className="text-orange-400 text-sm font-semibold mb-2">⏳ Unverified Accounts (Require Onboarding):</p>
-                <div className="text-cyber-gray-light text-xs space-y-1">
-                  {selectedRole === 'driver' && <p><strong>Driver:</strong> unverified.driver@tapngo.com / password123</p>}
-                  {selectedRole === 'customer' && <p><strong>Customer:</strong> unverified.customer@tapngo.com / password123</p>}
-                </div>
+              <div className="space-y-3 text-sm text-soft-mcm-light">
+                <p className="flex items-center gap-2"><span className="text-soft-mcm-sage">•</span> Fast role-based onboarding</p>
+                <p className="flex items-center gap-2"><span className="text-soft-mcm-sage">•</span> Real-time wallet and earnings visibility</p>
+                <p className="flex items-center gap-2"><span className="text-soft-mcm-sage">•</span> Secure and verified payment experience</p>
               </div>
-            </>
-          )}
+            </aside>
+
+            <section className="p-6 sm:p-8 lg:p-10">
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="mb-5 inline-flex items-center gap-2 rounded-lg border border-soft-mcm-sage/30 px-3 py-1.5 text-sm font-semibold text-soft-mcm-sage hover:bg-soft-mcm-sage-dark/10"
+              >
+                <ArrowLeft size={16} />
+                Back to Home
+              </button>
+
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-soft-mcm-rose mb-1">tapNGo</h2>
+                <p className="text-soft-mcm-gray text-sm">Sign in to continue to your dashboard</p>
+              </div>
+
+              {!selectedRole ? (
+                <div className="space-y-4">
+                  <p className="text-soft-mcm-light font-semibold">Choose your role to continue</p>
+
+                  <button
+                    onClick={() => {
+                      setSelectedRole('driver');
+                      setIsLogin(true);
+                      setError('');
+                      setFormData({ email: '', phone: '', name: '', password: '', role: 'driver' });
+                    }}
+                    className="w-full rounded-2xl border border-soft-mcm-sage/40 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-sage-dark px-5 py-4 text-white font-bold text-lg transition hover:from-soft-mcm-sage-dark hover:to-soft-mcm-sage-deep shadow-lg"
+                  >
+                    <span className="flex items-center justify-center gap-3">
+                      <Truck size={26} />
+                      I'm a Driver
+                    </span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setSelectedRole('customer');
+                      setIsLogin(true);
+                      setError('');
+                      setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
+                    }}
+                    className="w-full rounded-2xl border border-soft-mcm-rose/40 bg-gradient-to-r from-soft-mcm-rose to-soft-mcm-rose-dark px-5 py-4 text-white font-bold text-lg transition hover:from-soft-mcm-rose-dark hover:to-soft-mcm-rose-deep shadow-lg"
+                  >
+                    <span className="flex items-center justify-center gap-3">
+                      <ShoppingCart size={26} />
+                      I'm a Customer
+                    </span>
+                  </button>
+
+                  <p className="text-soft-mcm-gray text-xs text-center pt-2">
+                    Admin and merchant accounts require registration from administrators.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-6 rounded-xl border border-soft-mcm-sage/30 bg-soft-mcm-dark/45 p-3 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-soft-mcm-gray text-xs">Signing in as</p>
+                      <p className="text-soft-mcm-sage font-bold text-base capitalize">{roleLabel}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedRole(null);
+                        setError('');
+                        setFormData({ email: '', phone: '', name: '', password: '', role: 'customer' });
+                      }}
+                      className="rounded-lg border border-soft-mcm-sage/35 px-3 py-1.5 text-sm font-semibold text-soft-mcm-light hover:bg-soft-mcm-sage-dark/10"
+                    >
+                      Change Role
+                    </button>
+                  </div>
+
+                  <div className="mb-6 grid grid-cols-2 gap-2 rounded-xl border border-soft-mcm-sage/25 bg-soft-mcm-dark/45 p-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsLogin(true);
+                        setError('');
+                        setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
+                      }}
+                      className={`rounded-lg py-2 text-sm font-semibold ${isLogin ? 'bg-soft-mcm-rose text-soft-mcm-dark' : 'text-soft-mcm-light hover:bg-soft-mcm-sage-dark/10'}`}
+                    >
+                      Login
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsLogin(false);
+                        setError('');
+                        setFormData({ ...formData, email: '', phone: '', name: '', password: '' });
+                      }}
+                      className={`rounded-lg py-2 text-sm font-semibold ${!isLogin ? 'bg-soft-mcm-rose text-soft-mcm-dark' : 'text-soft-mcm-light hover:bg-soft-mcm-sage-dark/10'}`}
+                    >
+                      Register
+                    </button>
+                  </div>
+
+                  {error && (
+                    <div className="mb-5 rounded-xl border border-red-500/45 bg-red-900/20 px-4 py-3 text-red-200 flex gap-2">
+                      <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{error}</span>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {!isLogin && (
+                      <>
+                        <div className="relative">
+                          <User size={19} className="absolute left-3 top-3.5 text-soft-mcm-sage" />
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Full Name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required={!isLogin}
+                            className="soft-input pl-11"
+                          />
+                        </div>
+                        <div className="relative">
+                          <Phone size={19} className="absolute left-3 top-3.5 text-soft-mcm-sage" />
+                          <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone Number"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            required={!isLogin}
+                            className="soft-input pl-11"
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    <div className="relative">
+                      <Mail size={19} className="absolute left-3 top-3.5 text-soft-mcm-sage" />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="soft-input pl-11"
+                      />
+                    </div>
+
+                    <div className="relative">
+                      <Lock size={19} className="absolute left-3 top-3.5 text-soft-mcm-sage" />
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                        className="soft-input pl-11"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="soft-btn-primary w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {isLoading ? 'Please wait...' : isLogin ? `Login as ${roleLabel}` : `Register as ${roleLabel}`}
+                    </button>
+                  </form>
+
+                  <div className="mt-7 rounded-xl border border-soft-mcm-sage/25 bg-soft-mcm-dark/45 p-4 text-xs">
+                    <p className="text-soft-mcm-sage font-semibold mb-2">Verified accounts (skip onboarding)</p>
+                    <div className="text-soft-mcm-light space-y-1 mb-3">
+                      {selectedRole === 'driver' && <p><strong>Driver:</strong> driver@tapngo.com / password123</p>}
+                      {selectedRole === 'customer' && <p><strong>Customer:</strong> customer@tapngo.com / password123</p>}
+                    </div>
+
+                    <p className="text-soft-mcm-rose font-semibold mb-2">Unverified accounts (require onboarding)</p>
+                    <div className="text-soft-mcm-light space-y-1">
+                      {selectedRole === 'driver' && <p><strong>Driver:</strong> unverified.driver@tapngo.com / password123</p>}
+                      {selectedRole === 'customer' && <p><strong>Customer:</strong> unverified.customer@tapngo.com / password123</p>}
+                    </div>
+                  </div>
+                </>
+              )}
+            </section>
+          </div>
         </div>
       </div>
     </div>

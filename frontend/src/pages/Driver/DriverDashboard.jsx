@@ -32,12 +32,12 @@ export default function DriverDashboard() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="app-shell">
       <Navbar title="Driver Dashboard" />
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         {error && (
-          <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-6">
+          <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-xl mb-6">
             {error}
           </div>
         )}
@@ -74,66 +74,66 @@ export default function DriverDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Link
             to="/driver/earnings"
-            className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6 hover:border-cyber-blue transition backdrop-blur-md"
+            className="surface-card surface-card-hover p-6"
           >
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-cyber-orange/20 rounded-lg">
-                <DollarSign className="text-cyber-orange" size={24} />
+              <div className="p-3 bg-soft-mcm-rose/20 rounded-lg">
+                <DollarSign className="text-soft-mcm-rose" size={24} />
               </div>
               <div>
-                <p className="text-cyber-gray-dark text-sm">View Earnings</p>
-                <p className="text-cyber-gray-light font-semibold">Detailed Report</p>
+                <p className="text-soft-mcm-gray text-sm">View Earnings</p>
+                <p className="text-soft-mcm-light font-semibold">Detailed Report</p>
               </div>
             </div>
           </Link>
 
           <Link
             to="/driver/rides"
-            className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6 hover:border-cyber-blue transition backdrop-blur-md"
+            className="surface-card surface-card-hover p-6"
           >
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-cyber-blue/20 rounded-lg">
-                <Users className="text-cyber-blue" size={24} />
+              <div className="p-3 bg-soft-mcm-sage/20 rounded-lg">
+                <Users className="text-soft-mcm-sage" size={24} />
               </div>
               <div>
-                <p className="text-cyber-gray-dark text-sm">View Rides</p>
-                <p className="text-cyber-gray-light font-semibold">Ride History</p>
+                <p className="text-soft-mcm-gray text-sm">View Rides</p>
+                <p className="text-soft-mcm-light font-semibold">Ride History</p>
               </div>
             </div>
           </Link>
 
-          <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6 backdrop-blur-md">
+          <div className="surface-card p-6">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-green-500/20 rounded-lg">
                 <Calendar className="text-green-400" size={24} />
               </div>
               <div>
-                <p className="text-cyber-gray-dark text-sm">This Month</p>
-                <p className="text-cyber-gray-light font-semibold">{stats?.todayRides || 0} rides</p>
+                <p className="text-soft-mcm-gray text-sm">This Month</p>
+                <p className="text-soft-mcm-light font-semibold">{stats?.todayRides || 0} rides</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Recent Rides */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6 backdrop-blur-md">
-          <h2 className="text-xl font-bold text-cyber-gray-light mb-6">Recent Rides</h2>
+        <div className="surface-card p-6">
+          <h2 className="text-xl font-bold text-soft-mcm-light mb-6">Recent Rides</h2>
           <div className="space-y-3">
             {stats?.recentRides && stats.recentRides.length > 0 ? (
               stats.recentRides.map((ride) => (
-                <div key={ride._id} className="flex justify-between items-center p-4 bg-cyber-navy rounded-lg border border-cyber-blue/20">
+                <div key={ride._id} className="flex justify-between items-center p-4 bg-soft-mcm-dark/65 rounded-xl border border-soft-mcm-sage/25">
                   <div>
-                    <p className="text-cyber-gray-light font-semibold">{ride.passengerId?.name}</p>
-                    <p className="text-cyber-gray-dark text-sm">{ride.startLocation} → {ride.endLocation}</p>
+                    <p className="text-soft-mcm-light font-semibold">{ride.passengerId?.name}</p>
+                    <p className="text-soft-mcm-gray text-sm">{ride.startLocation} → {ride.endLocation}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-cyber-orange font-bold">{formatCurrency(ride.calculatedFare)}</p>
-                    <p className="text-cyber-gray-dark text-sm capitalize">{ride.status}</p>
+                    <p className="text-soft-mcm-rose font-bold">{formatCurrency(ride.calculatedFare)}</p>
+                    <p className="text-soft-mcm-gray text-sm capitalize">{ride.status}</p>
                   </div>
                 </div>
               ))
             ) : (
-              <p className="text-cyber-gray-dark text-center py-8">No rides yet</p>
+              <p className="text-soft-mcm-gray text-center py-8">No rides yet</p>
             )}
           </div>
         </div>

@@ -30,7 +30,7 @@ export default function DriverEarnings() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="min-h-screen bg-soft-mcm-dark">
       <Navbar title="Earnings Report" />
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Period Selector */}
@@ -41,8 +41,8 @@ export default function DriverEarnings() {
               onClick={() => setPeriod(p)}
               className={`px-6 py-2 rounded-lg font-semibold transition capitalize ${
                 period === p
-                  ? 'bg-cyber-orange text-cyber-navy'
-                  : 'bg-cyber-navy-light border border-cyber-blue/30 text-cyber-gray-light hover:border-cyber-blue'
+                  ? 'bg-soft-mcm-rose text-soft-mcm-dark'
+                  : 'bg-soft-mcm-dark border border-soft-mcm-sage/30 text-soft-mcm-light hover:border-soft-mcm-sage'
               }`}
             >
               {p}
@@ -71,20 +71,20 @@ export default function DriverEarnings() {
         </div>
 
         {/* Daily Breakdown */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6 backdrop-blur-md">
-          <h2 className="text-xl font-bold text-cyber-gray-light mb-6">Daily Breakdown</h2>
+        <div className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-6 backdrop-blur-md">
+          <h2 className="text-xl font-bold text-soft-mcm-light mb-6">Daily Breakdown</h2>
           <div className="space-y-3">
             {earnings?.dailyBreakdown ? (
               Object.entries(earnings.dailyBreakdown)
                 .sort(([a], [b]) => new Date(b) - new Date(a))
                 .map(([date, amount]) => (
-                  <div key={date} className="flex justify-between items-center p-4 bg-cyber-navy rounded-lg border border-cyber-blue/20">
-                    <p className="text-cyber-gray-light font-semibold">{date}</p>
-                    <p className="text-cyber-orange font-bold">{formatCurrency(amount)}</p>
+                  <div key={date} className="flex justify-between items-center p-4 bg-soft-mcm-dark rounded-lg border border-soft-mcm-sage/20">
+                    <p className="text-soft-mcm-light font-semibold">{date}</p>
+                    <p className="text-soft-mcm-rose font-bold">{formatCurrency(amount)}</p>
                   </div>
                 ))
             ) : (
-              <p className="text-center text-cyber-gray-dark py-8">No data available</p>
+              <p className="text-center text-soft-mcm-gray py-8">No data available</p>
             )}
           </div>
         </div>

@@ -69,12 +69,12 @@ const DriverPaymentDisplay = () => {
       </div>
 
       {/* Information Section */}
-      <div className="mt-16 bg-gradient-to-r from-cyan-500/10 to-orange-500/10 border border-cyan-500/30 rounded-xl p-8">
+      <div className="mt-16 bg-gradient-to-r from-soft-mcm-sage/10 to-soft-mcm-rose/10 border border-soft-mcm-sage/30 rounded-xl p-8">
         <h3 className="text-xl font-bold text-white mb-4">How it Works</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="flex gap-4">
-            <div className="flex-shrink-0 w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center">
-              <span className="text-cyan-400 font-bold">1</span>
+            <div className="flex-shrink-0 w-10 h-10 bg-soft-mcm-sage/20 rounded-full flex items-center justify-center">
+              <span className="text-soft-mcm-sage font-bold">1</span>
             </div>
             <div>
               <h4 className="text-white font-semibold">Customer Scans QR</h4>
@@ -82,8 +82,8 @@ const DriverPaymentDisplay = () => {
             </div>
           </div>
           <div className="flex gap-4">
-            <div className="flex-shrink-0 w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center">
-              <span className="text-orange-400 font-bold">2</span>
+            <div className="flex-shrink-0 w-10 h-10 bg-soft-mcm-rose/20 rounded-full flex items-center justify-center">
+              <span className="text-soft-mcm-rose font-bold">2</span>
             </div>
             <div>
               <h4 className="text-white font-semibold">Opens GPay App</h4>
@@ -91,8 +91,8 @@ const DriverPaymentDisplay = () => {
             </div>
           </div>
           <div className="flex gap-4">
-            <div className="flex-shrink-0 w-10 h-10 bg-cyan-400/20 rounded-full flex items-center justify-center">
-              <span className="text-cyan-400 font-bold">3</span>
+            <div className="flex-shrink-0 w-10 h-10 bg-soft-mcm-sage/20 rounded-full flex items-center justify-center">
+              <span className="text-soft-mcm-sage font-bold">3</span>
             </div>
             <div>
               <h4 className="text-white font-semibold">Payment Complete</h4>
@@ -104,7 +104,7 @@ const DriverPaymentDisplay = () => {
 
       {/* Features Section */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20 rounded-xl p-6">
+        <div className="bg-gradient-to-br from-soft-mcm-sage/10 to-transparent border border-soft-mcm-sage/20 rounded-xl p-6">
           <h4 className="text-white font-bold mb-3">✨ Key Features</h4>
           <ul className="text-gray-300 text-sm space-y-2">
             <li>✓ Dynamic QR code generation</li>
@@ -116,7 +116,7 @@ const DriverPaymentDisplay = () => {
           </ul>
         </div>
 
-        <div className="bg-gradient-to-br from-orange-500/10 to-transparent border border-orange-500/20 rounded-xl p-6">
+        <div className="bg-gradient-to-br from-soft-mcm-rose/10 to-transparent border border-soft-mcm-rose/20 rounded-xl p-6">
           <h4 className="text-white font-bold mb-3">🎯 Benefits</h4>
           <ul className="text-gray-300 text-sm space-y-2">
             <li>✓ No internet required for QR</li>

@@ -91,12 +91,12 @@ const PaymentCardsShowcase = () => {
       <div className="max-w-7xl mx-auto space-y-8">
 
         {/* How It Works */}
-        <div className="bg-gradient-to-r from-cyan-500/10 to-orange-500/10 border border-cyan-500/30 rounded-2xl p-8">
+        <div className="bg-gradient-to-r from-soft-mcm-sage/10 to-soft-mcm-rose/10 border border-soft-mcm-sage/30 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-white mb-6">🎯 How Payment Cards Work</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 font-bold text-lg">1</div>
+              <div className="flex-shrink-0 w-12 h-12 bg-soft-mcm-sage/20 rounded-full flex items-center justify-center text-soft-mcm-sage font-bold text-lg">1</div>
               <div>
                 <h4 className="text-white font-semibold mb-2">Customer Scans QR</h4>
                 <p className="text-gray-400 text-sm">Customer uses any smartphone to scan the QR code at driver's dashboard or merchant counter</p>
@@ -104,7 +104,7 @@ const PaymentCardsShowcase = () => {
             </div>
 
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center text-orange-400 font-bold text-lg">2</div>
+              <div className="flex-shrink-0 w-12 h-12 bg-soft-mcm-rose/20 rounded-full flex items-center justify-center text-soft-mcm-rose font-bold text-lg">2</div>
               <div>
                 <h4 className="text-white font-semibold mb-2">Opens Google Pay</h4>
                 <p className="text-gray-400 text-sm">QR code contains UPI deeplink that automatically opens Google Pay app with pre-filled UPI ID</p>
@@ -123,31 +123,31 @@ const PaymentCardsShowcase = () => {
 
         {/* Key Features */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-soft-mcm-sage/10 to-transparent border border-soft-mcm-sage/20 rounded-2xl p-8">
             <h4 className="text-white font-bold text-xl mb-4">✨ Card Features</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>Dynamic QR code generation with UPI deeplinks</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>One-click UPI ID copy to clipboard</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>Download QR code for printing or saving</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>Display driver rating, contact, and stats</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>Glassmorphic design with Cyber-Urban theme</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-soft-mcm-sage mt-1">✓</span>
                 <span>Mobile-responsive and touch-friendly</span>
               </li>
             </ul>
@@ -185,12 +185,12 @@ const PaymentCardsShowcase = () => {
         </div>
 
         {/* Use Cases */}
-        <div className="bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-orange-500/10 border border-purple-500/30 rounded-2xl p-8">
+        <div className="bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-soft-mcm-rose/10 border border-purple-500/30 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-white mb-6">📋 Real-World Use Cases</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 className="text-cyan-300 font-semibold mb-3">🚗 For Auto Drivers</h4>
+              <h4 className="text-soft-mcm-sage font-semibold mb-3">🚗 For Auto Drivers</h4>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li>• Display card on dashboard for passenger to scan</li>
                 <li>• Print QR code and laminate for durability</li>
@@ -214,13 +214,13 @@ const PaymentCardsShowcase = () => {
         </div>
 
         {/* Technical Details */}
-        <div className="bg-gradient-to-r from-indigo-500/10 to-blue-500/10 border border-indigo-500/30 rounded-2xl p-8">
+        <div className="bg-gradient-to-r from-indigo-500/10 to-soft-mcm-sage/10 border border-indigo-500/30 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-white mb-6">🔧 Technical Implementation</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div>
               <h4 className="text-indigo-300 font-semibold mb-3">UPI Deeplink Format</h4>
-              <code className="block bg-slate-900/50 border border-indigo-500/20 rounded p-3 text-cyan-300 overflow-auto">
+              <code className="block bg-slate-900/50 border border-indigo-500/20 rounded p-3 text-soft-mcm-sage overflow-auto">
                 upi://pay?pa=UPI_ID&pn=NAME&tn=DESCRIPTION
               </code>
               <p className="text-gray-400 mt-2 text-xs">All major UPI apps recognize this format and auto-open.</p>
@@ -228,7 +228,7 @@ const PaymentCardsShowcase = () => {
 
             <div>
               <h4 className="text-indigo-300 font-semibold mb-3">QR Code Library</h4>
-              <p className="text-gray-300">Built with <span className="text-cyan-400">qrcode.react</span> - generates high-quality QR codes with error correction level H (30% recovery).</p>
+              <p className="text-gray-300">Built with <span className="text-soft-mcm-sage">qrcode.react</span> - generates high-quality QR codes with error correction level H (30% recovery).</p>
               <p className="text-gray-400 mt-2 text-xs">Supports download as PNG for printing.</p>
             </div>
           </div>
