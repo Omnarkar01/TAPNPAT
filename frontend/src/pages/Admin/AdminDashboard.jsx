@@ -8,7 +8,7 @@ import { Users, Zap, Wallet, TrendingUp } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import { Link } from 'react-router-dom';
 
-const COLORS = ['#FF6B35', '#00D4FF', '#10B981', '#FCD34D'];
+const COLORS = ['#B89B8F', '#8BA499', '#A8D5BA', '#DCCFC6'];
 
 export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);

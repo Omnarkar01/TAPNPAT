@@ -124,139 +124,135 @@ const LandingPage = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="app-shell">
       {/* Navigation */}
-      <nav className="bg-slate-900/50 backdrop-blur-sm border-b border-cyan-500/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center font-bold">
-                TN
+      <nav className="sticky top-0 z-50 border-b border-soft-mcm-sage/25 bg-soft-mcm-dark/65 backdrop-blur-xl">
+        <div className="section-wrap py-3">
+          <div className="surface-card rounded-2xl border-soft-mcm-sage/25 bg-soft-mcm-dark/70 px-4 sm:px-5">
+            <div className="flex h-14 justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-soft-mcm-sage to-soft-mcm-rose rounded-xl flex items-center justify-center font-bold text-soft-mcm-dark">
+                  TN
+                </div>
+                <span className="text-xl font-bold">tapNGo</span>
               </div>
-              <span className="text-xl font-bold">tapNGo</span>
-            </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="hover:text-cyan-400 transition-colors">Features</a>
-              <a href="#how-it-works" className="hover:text-cyan-400 transition-colors">How It Works</a>
-              <a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a>
+              <div className="hidden md:flex items-center gap-7">
+                <a href="#features" className="text-soft-mcm-gray hover:text-soft-mcm-sage">Features</a>
+                <a href="#how-it-works" className="text-soft-mcm-gray hover:text-soft-mcm-sage">How It Works</a>
+                <a href="#faq" className="text-soft-mcm-gray hover:text-soft-mcm-sage">FAQ</a>
+                <button
+                  onClick={() => navigate('/login')}
+                  className="px-5 py-2 rounded-xl font-semibold bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark text-soft-mcm-dark hover:text-soft-mcm-light"
+                >
+                  Login
+                </button>
+              </div>
+
               <button
-                onClick={() => navigate('/login')}
-                className="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-semibold transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden rounded-lg border border-soft-mcm-sage/35 p-2"
+                aria-label="Toggle menu"
               >
-                Login
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {mobileMenuOpen && (
+              <div className="md:hidden border-t border-soft-mcm-sage/25 py-4 space-y-2">
+                <a href="#features" className="block py-2 text-soft-mcm-gray hover:text-soft-mcm-sage" onClick={() => setMobileMenuOpen(false)}>Features</a>
+                <a href="#how-it-works" className="block py-2 text-soft-mcm-gray hover:text-soft-mcm-sage" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
+                <a href="#faq" className="block py-2 text-soft-mcm-gray hover:text-soft-mcm-sage" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+                <button
+                  onClick={() => navigate('/login')}
+                  className="mt-2 w-full px-5 py-2 rounded-xl font-semibold bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark text-soft-mcm-dark hover:text-soft-mcm-light"
+                >
+                  Login
+                </button>
+              </div>
+            )}
           </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden pb-4 space-y-2">
-              <a href="#features" className="block py-2 hover:text-cyan-400">Features</a>
-              <a href="#how-it-works" className="block py-2 hover:text-cyan-400">How It Works</a>
-              <a href="#faq" className="block py-2 hover:text-cyan-400">FAQ</a>
-              <button
-                onClick={() => navigate('/login')}
-                className="w-full mt-2 px-6 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-semibold transition-colors"
-              >
-                Login
-              </button>
-            </div>
-          )}
         </div>
       </nav>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 left-0 w-[30rem] h-[30rem] bg-soft-mcm-sage/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-12 right-0 w-[26rem] h-[26rem] bg-soft-mcm-rose/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-orange-400 bg-clip-text text-transparent">
+        <div className="relative section-wrap py-20 md:py-28">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-soft-mcm-light tracking-tight">
               Welcome to tapNGo
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">
+            <p className="text-xl md:text-2xl text-soft-mcm-taupe mb-4">
               The future of contactless payments for autorickshaw rides and retail
             </p>
-            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-soft-mcm-gray mb-10 max-w-2xl mx-auto">
               Say goodbye to change issues. Tap once to pay. Instant settlement. Zero disputes. Available in 50+ cities across India.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
                 onClick={() => navigate('/login')}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-orange-500 hover:from-cyan-600 hover:to-orange-600 rounded-lg font-bold text-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark rounded-xl font-bold text-lg text-soft-mcm-dark hover:text-soft-mcm-light transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Get Started <ArrowRight size={20} />
               </button>
-              <button
-                className="px-8 py-4 border-2 border-cyan-500/50 hover:border-cyan-400 rounded-lg font-bold text-lg transition-colors"
-              >
+              <button className="soft-btn-secondary px-8 py-4 text-lg">
                 Watch Demo
               </button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-12 border-t border-b border-cyan-500/20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
               {stats.map((stat, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-3xl md:text-4xl font-bold text-cyan-400">{stat.number}</p>
-                  <p className="text-gray-400">{stat.label}</p>
+                <div key={i} className="surface-card border-soft-mcm-sage/25 p-4 md:p-5 text-center">
+                  <p className="text-2xl md:text-3xl font-bold text-soft-mcm-sage">{stat.number}</p>
+                  <p className="text-soft-mcm-gray text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Hero Image Placeholder */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-cyan-500/20 to-orange-500/20 border border-cyan-500/30 rounded-2xl p-8 flex items-center justify-center min-h-96">
+            <div className="surface-card border-soft-mcm-sage/25 p-8 flex items-center justify-center min-h-80 bg-gradient-to-r from-soft-mcm-dark/70 to-soft-mcm-sage/10">
               <div className="text-center">
-                <Smartphone className="w-24 h-24 mx-auto text-cyan-400 mb-4" />
+                <Smartphone className="w-20 h-20 mx-auto text-soft-mcm-sage mb-4" />
                 <p className="text-xl font-semibold">Download tapNGo App</p>
-                <p className="text-gray-400 mt-2">Coming to iOS & Android</p>
+                <p className="text-soft-mcm-gray mt-2">Coming to iOS & Android</p>
               </div>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-slate-900/50 border border-cyan-500/30 rounded-xl p-4 flex items-start gap-3">
-                <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="text-cyan-400" size={20} />
+              <div className="surface-card border-soft-mcm-sage/25 p-4 flex items-start gap-3">
+                <div className="w-10 h-10 bg-soft-mcm-sage/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Zap className="text-soft-mcm-sage" size={20} />
                 </div>
                 <div>
                   <p className="font-semibold">Instant Settlements</p>
-                  <p className="text-sm text-gray-400">Money in your account within 4 hours</p>
+                  <p className="text-sm text-soft-mcm-gray">Money in your account within 4 hours</p>
                 </div>
               </div>
 
-              <div className="bg-slate-900/50 border border-cyan-500/30 rounded-xl p-4 flex items-start gap-3">
-                <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Shield className="text-orange-400" size={20} />
+              <div className="surface-card border-soft-mcm-sage/25 p-4 flex items-start gap-3">
+                <div className="w-10 h-10 bg-soft-mcm-rose/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Shield className="text-soft-mcm-rose" size={20} />
                 </div>
                 <div>
                   <p className="font-semibold">Bank-Level Security</p>
-                  <p className="text-sm text-gray-400">Enterprise-grade encryption & protection</p>
+                  <p className="text-sm text-soft-mcm-gray">Enterprise-grade encryption & protection</p>
                 </div>
               </div>
 
-              <div className="bg-slate-900/50 border border-cyan-500/30 rounded-xl p-4 flex items-start gap-3">
+              <div className="surface-card border-soft-mcm-sage/25 p-4 flex items-start gap-3">
                 <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <QrCode className="text-emerald-400" size={20} />
+                  <QrCode className="text-emerald-300" size={20} />
                 </div>
                 <div>
                   <p className="font-semibold">QR Code Fallback</p>
-                  <p className="text-sm text-gray-400">Works with all UPI apps (GPay, PhonePe, Paytm)</p>
+                  <p className="text-sm text-soft-mcm-gray">Works with all UPI apps (GPay, PhonePe, Paytm)</p>
                 </div>
               </div>
             </div>
@@ -265,19 +261,19 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      <section id="features" className="py-20 md:py-28">
+        <div className="section-wrap">
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Powerful Features</h2>
-            <p className="text-gray-400 text-lg">Everything you need for seamless contactless payments</p>
+            <p className="text-soft-mcm-gray text-lg">Everything you need for seamless contactless payments</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, i) => (
-              <div key={i} className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-500/50 transition-all">
-                <div className="text-cyan-400 mb-4">{feature.icon}</div>
+              <div key={i} className="surface-card surface-card-hover border-soft-mcm-sage/20 p-7">
+                <div className="text-soft-mcm-sage mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-soft-mcm-gray">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -285,26 +281,26 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 md:py-32 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      <section id="how-it-works" className="py-20 md:py-28 bg-gradient-to-r from-soft-mcm-dark/70 via-soft-mcm-dark/55 to-soft-mcm-dark/70">
+        <div className="section-wrap">
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
-            <p className="text-gray-400 text-lg">Get started in 4 simple steps</p>
+            <p className="text-soft-mcm-gray text-lg">Get started in 4 simple steps</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {howItWorks.map((item, i) => (
               <div key={i} className="relative">
-                <div className="bg-gradient-to-br from-cyan-500/10 to-orange-500/10 border border-cyan-500/30 rounded-xl p-6 text-center">
+                <div className="surface-card border-soft-mcm-sage/25 p-6 text-center h-full">
                   <div className="text-5xl mb-4">{item.icon}</div>
-                  <h3 className="text-2xl font-bold mb-2">{item.step}</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-soft-mcm-sage">{item.step}</h3>
                   <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                  <p className="text-gray-400 text-sm">{item.description}</p>
+                  <p className="text-soft-mcm-gray text-sm">{item.description}</p>
                 </div>
 
                 {i < 3 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <ArrowRight className="text-cyan-500" size={24} />
+                    <ArrowRight className="text-soft-mcm-sage" size={24} />
                   </div>
                 )}
               </div>
@@ -314,25 +310,25 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      <section className="py-20 md:py-28">
+        <div className="section-wrap">
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">What Users Say</h2>
-            <p className="text-gray-400 text-lg">Join thousands of happy drivers and customers</p>
+            <p className="text-soft-mcm-gray text-lg">Join thousands of happy drivers and customers</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, i) => (
-              <div key={i} className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-cyan-500/20 rounded-xl p-6">
+              <div key={i} className="surface-card border-soft-mcm-sage/20 p-6">
                 <div className="flex items-center gap-2 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <span key={j} className="text-orange-400">★</span>
+                    <span key={j} className="text-soft-mcm-rose">★</span>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-soft-mcm-taupe mb-6 italic">"{testimonial.text}"</p>
                 <div>
                   <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-sm text-gray-400">{testimonial.role} • {testimonial.city}</p>
+                  <p className="text-sm text-soft-mcm-gray">{testimonial.role} • {testimonial.city}</p>
                 </div>
               </div>
             ))}
@@ -341,19 +337,19 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 md:py-32 bg-slate-900/50">
+      <section id="faq" className="py-20 md:py-28 bg-gradient-to-r from-soft-mcm-dark/70 via-soft-mcm-dark/55 to-soft-mcm-dark/70">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-400 text-lg">Got questions? We have answers</p>
+            <p className="text-soft-mcm-gray text-lg">Got questions? We have answers</p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-cyan-500/20 rounded-xl overflow-hidden">
+              <div key={i} className="surface-card border-soft-mcm-sage/20 overflow-hidden">
                 <button
                   onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-cyan-500/5 transition-colors"
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-soft-mcm-sage-dark/5"
                 >
                   <span className="font-semibold text-left">{faq.q}</span>
                   <ChevronDown
@@ -363,7 +359,7 @@ const LandingPage = () => {
                 </button>
 
                 {openFAQ === i && (
-                  <div className="px-6 pb-4 text-gray-300 border-t border-cyan-500/20">
+                  <div className="px-6 pb-4 text-soft-mcm-taupe border-t border-soft-mcm-sage/20">
                     {faq.a}
                   </div>
                 )}
@@ -374,17 +370,17 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-cyan-500/20 via-orange-500/20 to-cyan-500/20 border border-cyan-500/30 rounded-3xl p-12 md:p-16 text-center">
+      <section className="py-20 md:py-28">
+        <div className="section-wrap">
+          <div className="surface-card border-soft-mcm-sage/30 rounded-3xl p-10 md:p-16 text-center bg-gradient-to-br from-soft-mcm-dark/70 to-soft-mcm-sage/10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Payments?</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-soft-mcm-taupe mb-8 max-w-2xl mx-auto">
               Join thousands of drivers and customers already using tapNGo. Earn more, pay smarter.
             </p>
 
             <button
               onClick={() => navigate('/login')}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-orange-500 hover:from-cyan-600 hover:to-orange-600 rounded-lg font-bold text-lg transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-gradient-to-r from-soft-mcm-sage to-soft-mcm-rose hover:from-soft-mcm-sage-dark hover:to-soft-mcm-rose-dark rounded-xl font-bold text-lg text-soft-mcm-dark hover:text-soft-mcm-light transition-transform hover:-translate-y-0.5"
             >
               Get Started Now
             </button>
@@ -393,48 +389,48 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950/50 border-t border-cyan-500/20 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="border-t border-soft-mcm-sage/20 py-12 bg-soft-mcm-dark/70">
+        <div className="section-wrap">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-lg flex items-center justify-center font-bold text-sm">
+                <div className="w-8 h-8 bg-gradient-to-br from-soft-mcm-sage to-soft-mcm-rose rounded-lg flex items-center justify-center font-bold text-sm text-soft-mcm-dark">
                   TN
                 </div>
                 <span className="font-bold">tapNGo</span>
               </div>
-              <p className="text-gray-400 text-sm">The future of contactless payments.</p>
+              <p className="text-soft-mcm-gray text-sm">The future of contactless payments.</p>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-cyan-400">Features</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Security</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Pricing</a></li>
+              <ul className="space-y-2 text-soft-mcm-gray text-sm">
+                <li><a href="#" className="hover:text-soft-mcm-sage">Features</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Security</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Pricing</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-cyan-400">About Us</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Blog</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Careers</a></li>
+              <ul className="space-y-2 text-soft-mcm-gray text-sm">
+                <li><a href="#" className="hover:text-soft-mcm-sage">About Us</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Blog</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Careers</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-cyan-400">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-cyan-400">Contact Us</a></li>
+              <ul className="space-y-2 text-soft-mcm-gray text-sm">
+                <li><a href="#" className="hover:text-soft-mcm-sage">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-soft-mcm-sage">Contact Us</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-cyan-500/20 pt-8 text-center text-gray-400 text-sm">
+          <div className="border-t border-soft-mcm-sage/20 pt-8 text-center text-soft-mcm-gray text-sm">
             <p>&copy; 2026 tapNGo. All rights reserved. | Made with ❤️ for India</p>
           </div>
         </div>

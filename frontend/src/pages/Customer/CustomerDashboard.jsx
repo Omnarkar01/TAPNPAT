@@ -31,30 +31,30 @@ export default function CustomerDashboard() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="app-shell">
       <Navbar title="Wallet & Transactions" />
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         {error && (
-          <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-6">
+          <div className="bg-red-900/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-xl mb-6">
             {error}
           </div>
         )}
 
         {/* Wallet Card */}
-        <div className="bg-gradient-to-r from-cyber-orange to-orange-600 rounded-lg p-8 mb-8 text-cyber-navy">
-          <p className="text-sm font-semibold opacity-90 mb-2">Available Balance</p>
+        <div className="surface-card border-soft-mcm-rose/40 bg-gradient-to-r from-soft-mcm-rose to-soft-mcm-rose-dark rounded-2xl p-8 mb-8 text-soft-mcm-dark">
+          <p className="text-sm font-semibold opacity-90 mb-2 tracking-wide uppercase">Available Balance</p>
           <h2 className="text-4xl font-bold mb-6">{formatCurrency(wallet?.balance || 0)}</h2>
           <div className="flex gap-4">
             <Link
               to="/customer/wallet"
-              className="bg-cyber-navy text-cyber-orange px-6 py-2 rounded-lg font-semibold hover:bg-cyber-navy-light transition"
+              className="bg-soft-mcm-dark text-soft-mcm-rose px-6 py-2.5 rounded-xl font-semibold hover:bg-[#2f2f2f] transition"
             >
               Top Up
             </Link>
             <Link
               to="/customer/transactions"
-              className="border-2 border-cyber-navy text-cyber-navy px-6 py-2 rounded-lg font-semibold hover:bg-cyber-navy/20 transition"
+              className="border-2 border-soft-mcm-dark text-soft-mcm-dark px-6 py-2.5 rounded-xl font-semibold hover:bg-soft-mcm-dark/20 transition"
             >
               History
             </Link>

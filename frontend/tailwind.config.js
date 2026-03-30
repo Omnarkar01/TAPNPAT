@@ -4,12 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cyber-navy': '#0F1419',
-        'cyber-navy-light': '#1A1F2A',
-        'cyber-orange': '#FF6B35',
-        'cyber-blue': '#00D4FF',
-        'cyber-gray-light': '#E8E8E8',
-        'cyber-gray-dark': '#6B7280',
+        'soft-mcm-dark': '#3A3A3A',
+        'soft-mcm-light': '#FFFFFF',
+        'soft-mcm-sage': '#10B981',
+        'soft-mcm-sage-dark': '#059669',
+        'soft-mcm-sage-deep': '#047857',
+        'soft-mcm-rose': '#F97316',
+        'soft-mcm-rose-dark': '#EA580C',
+        'soft-mcm-rose-deep': '#C2410C',
+        'soft-mcm-taupe': '#E5E7EB',
+        'soft-mcm-gray': '#9CA3AF',
       },
     },
   },

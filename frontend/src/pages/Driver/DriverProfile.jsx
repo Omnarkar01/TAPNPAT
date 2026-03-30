@@ -88,7 +88,7 @@ export default function DriverProfile() {
   };
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="min-h-screen bg-soft-mcm-dark">
       <Navbar title="Driver Profile" />
 
       <main className="max-w-4xl mx-auto px-6 py-8">
@@ -108,21 +108,21 @@ export default function DriverProfile() {
         )}
 
         {/* Profile Header */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-8 mb-6">
+        <div className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-8 mb-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-orange-500 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-soft-mcm-sage to-soft-mcm-rose rounded-full flex items-center justify-center">
                 <User size={32} className="text-white" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-white">{formData.fullName || 'Driver Name'}</h2>
-                <p className="text-cyber-gray-light">🚗 Verified Driver</p>
+                <p className="text-soft-mcm-light">🚗 Verified Driver</p>
               </div>
             </div>
             {!isEditing && (
               <button
                 onClick={() => setIsEditing(true)}
-                className="px-6 py-2 bg-cyber-orange hover:bg-orange-600 text-cyber-navy font-semibold rounded-lg transition"
+                className="px-6 py-2 bg-soft-mcm-rose hover:bg-soft-mcm-rose-dark text-soft-mcm-dark hover:text-soft-mcm-light font-semibold rounded-lg transition"
               >
                 Edit Profile
               </button>
@@ -133,48 +133,48 @@ export default function DriverProfile() {
         {/* Profile Sections */}
         <div className="space-y-6">
           {/* Personal Information */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <User size={24} className="text-cyber-blue" />
+              <User size={24} className="text-soft-mcm-sage" />
               Personal Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Full Name</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Email</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Phone Number</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Phone Number</label>
                 <input
                   type="tel"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -182,21 +182,21 @@ export default function DriverProfile() {
           </section>
 
           {/* Vehicle Information */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Briefcase size={24} className="text-cyber-orange" />
+              <Briefcase size={24} className="text-soft-mcm-rose" />
               Vehicle Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Vehicle Type</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Vehicle Type</label>
                 <select
                   name="vehicleType"
                   value={formData.vehicleType}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 >
                   <option value="">Select vehicle type</option>
@@ -206,41 +206,41 @@ export default function DriverProfile() {
                 </select>
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Vehicle Name</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Vehicle Name</label>
                 <input
                   type="text"
                   name="vehicleName"
                   value={formData.vehicleName}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Vehicle Number</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Vehicle Number</label>
                 <input
                   type="text"
                   name="vehicleNumber"
                   value={formData.vehicleNumber}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">License Number</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">License Number</label>
                 <input
                   type="text"
                   name="licenseNumber"
                   value={formData.licenseNumber}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -248,74 +248,74 @@ export default function DriverProfile() {
           </section>
 
           {/* Banking & UPI */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Wallet size={24} className="text-cyber-blue" />
+              <Wallet size={24} className="text-soft-mcm-sage" />
               Banking Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">UPI ID</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">UPI ID</label>
                 <input
                   type="text"
                   name="gpayUPI"
                   value={formData.gpayUPI}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Account Holder Name</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Account Holder Name</label>
                 <input
                   type="text"
                   name="accountHolderName"
                   value={formData.accountHolderName}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Bank Name</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Bank Name</label>
                 <input
                   type="text"
                   name="bankName"
                   value={formData.bankName}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Account Number</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Account Number</label>
                 <input
                   type="text"
                   name="accountNumber"
                   value={formData.accountNumber}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-cyber-gray-light text-sm mb-2">IFSC Code</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">IFSC Code</label>
                 <input
                   type="text"
                   name="ifscCode"
                   value={formData.ifscCode}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -323,61 +323,61 @@ export default function DriverProfile() {
           </section>
 
           {/* Location & Address */}
-          <section className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg p-6">
+          <section className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <MapPin size={24} className="text-cyber-orange" />
+              <MapPin size={24} className="text-soft-mcm-rose" />
               Location Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">City</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">City</label>
                 <input
                   type="text"
                   name="city"
                   value={formData.city}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">State</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">State</label>
                 <input
                   type="text"
                   name="state"
                   value={formData.state}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div>
-                <label className="block text-cyber-gray-light text-sm mb-2">Postal Code</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Postal Code</label>
                 <input
                   type="text"
                   name="zipCode"
                   value={formData.zipCode}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-cyber-gray-light text-sm mb-2">Address</label>
+                <label className="block text-soft-mcm-light text-sm mb-2">Address</label>
                 <textarea
                   name="address"
                   value={formData.address}
                   onChange={handleInputChange}
                   disabled={!isEditing}
                   rows={3}
-                  className={`w-full px-4 py-2 rounded-lg bg-cyber-navy border border-cyber-blue/30 text-white ${
-                    isEditing ? 'focus:border-cyber-blue focus:outline-none' : 'opacity-75 cursor-not-allowed'
+                  className={`w-full px-4 py-2 rounded-lg bg-soft-mcm-dark border border-soft-mcm-sage/30 text-white ${
+                    isEditing ? 'focus:border-soft-mcm-sage focus:outline-none' : 'opacity-75 cursor-not-allowed'
                   }`}
                 />
               </div>
@@ -390,13 +390,13 @@ export default function DriverProfile() {
               <button
                 onClick={handleSave}
                 disabled={isSaving}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white rounded-lg font-semibold transition disabled:opacity-50"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-500 to-soft-mcm-sage hover:from-emerald-600 hover:to-soft-mcm-sage text-white rounded-lg font-semibold transition disabled:opacity-50"
               >
                 {isSaving ? 'Saving...' : 'Save Changes'}
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="flex-1 px-6 py-3 border border-cyber-blue/30 text-cyber-blue hover:bg-cyber-blue/10 rounded-lg font-semibold transition"
+                className="flex-1 px-6 py-3 border border-soft-mcm-sage/30 text-soft-mcm-sage hover:bg-soft-mcm-sage-dark/10 rounded-lg font-semibold transition"
               >
                 Cancel
               </button>

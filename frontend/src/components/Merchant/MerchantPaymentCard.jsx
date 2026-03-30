@@ -42,7 +42,7 @@ const MerchantPaymentCard = ({ merchant = {
       {/* Main Card Container */}
       <div className="relative">
         {/* Glassmorphic Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-orange-500/10 rounded-3xl blur-xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-soft-mcm-rose/10 rounded-3xl blur-xl" />
 
         {/* Card Content */}
         <div className="relative bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-6 shadow-2xl">
@@ -65,8 +65,8 @@ const MerchantPaymentCard = ({ merchant = {
               <p className="text-xs text-emerald-400/70 uppercase tracking-wide">Monthly Volume</p>
               <p className="text-lg font-bold text-white mt-1">₹{(merchant.monthlyVolume / 1000).toFixed(0)}K</p>
             </div>
-            <div className="bg-orange-500/10 rounded-lg p-3 border border-orange-500/20">
-              <p className="text-xs text-orange-400/70 uppercase tracking-wide">Transactions</p>
+            <div className="bg-soft-mcm-rose/10 rounded-lg p-3 border border-soft-mcm-rose/20">
+              <p className="text-xs text-soft-mcm-rose/70 uppercase tracking-wide">Transactions</p>
               <p className="text-lg font-bold text-white mt-1">{merchant.totalTransactions}</p>
             </div>
           </div>
@@ -124,7 +124,7 @@ const MerchantPaymentCard = ({ merchant = {
           </div>
 
           {/* Payment Methods Info */}
-          <div className="bg-gradient-to-r from-emerald-500/5 to-orange-500/5 border border-dashed border-emerald-500/30 rounded-xl p-4">
+          <div className="bg-gradient-to-r from-emerald-500/5 to-soft-mcm-rose/5 border border-dashed border-emerald-500/30 rounded-xl p-4">
             <p className="text-xs text-gray-400 font-semibold uppercase mb-2">Payment Methods</p>
             <ul className="text-xs text-gray-300 space-y-1">
               <li>✓ TapNGo NFC (Preferred)</li>
@@ -143,7 +143,7 @@ const MerchantPaymentCard = ({ merchant = {
 
         {/* Decorative Elements */}
         <div className="absolute -top-1 -left-1 w-20 h-20 bg-emerald-500/20 rounded-full blur-2xl" />
-        <div className="absolute -bottom-1 -right-1 w-32 h-32 bg-orange-500/20 rounded-full blur-2xl" />
+        <div className="absolute -bottom-1 -right-1 w-32 h-32 bg-soft-mcm-rose/20 rounded-full blur-2xl" />
       </div>
     </div>
   );

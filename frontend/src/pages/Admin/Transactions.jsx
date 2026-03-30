@@ -37,7 +37,7 @@ export default function AdminTransactions() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-cyber-navy">
+    <div className="min-h-screen bg-soft-mcm-dark">
       <Navbar title="Transaction Audit Log" />
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Filters */}
@@ -48,7 +48,7 @@ export default function AdminTransactions() {
               setFilters({ ...filters, status: e.target.value });
               setPage(1);
             }}
-            className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg py-2 px-4 text-cyber-gray-light text-sm"
+            className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg py-2 px-4 text-soft-mcm-light text-sm"
           >
             <option value="">All Status</option>
             <option value="pending">Pending</option>
@@ -62,7 +62,7 @@ export default function AdminTransactions() {
               setFilters({ ...filters, type: e.target.value });
               setPage(1);
             }}
-            className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg py-2 px-4 text-cyber-gray-light text-sm"
+            className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg py-2 px-4 text-soft-mcm-light text-sm"
           >
             <option value="">All Types</option>
             <option value="payment">Payment</option>
@@ -72,26 +72,26 @@ export default function AdminTransactions() {
         </div>
 
         {/* Transactions Table */}
-        <div className="bg-cyber-navy-light border border-cyber-blue/30 rounded-lg overflow-hidden backdrop-blur-md">
+        <div className="bg-soft-mcm-dark border border-soft-mcm-sage/30 rounded-lg overflow-hidden backdrop-blur-md">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-cyber-navy border-b border-cyber-blue/30">
+              <thead className="bg-soft-mcm-dark border-b border-soft-mcm-sage/30">
                 <tr>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">User</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Amount</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Type</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Status</th>
-                  <th className="text-left p-4 text-cyber-gray-light font-semibold">Date</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">User</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Amount</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Type</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Status</th>
+                  <th className="text-left p-4 text-soft-mcm-light font-semibold">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {transactions && transactions.length > 0 ? (
                   transactions.map((tx) => (
-                    <tr key={tx._id} className="border-b border-cyber-blue/20 hover:bg-cyber-navy/50 transition">
-                      <td className="p-4 text-cyber-gray-light font-semibold">{tx.userId?.name}</td>
-                      <td className="p-4 text-cyber-orange font-bold">{formatCurrency(tx.amount)}</td>
+                    <tr key={tx._id} className="border-b border-soft-mcm-sage/20 hover:bg-soft-mcm-dark/50 transition">
+                      <td className="p-4 text-soft-mcm-light font-semibold">{tx.userId?.name}</td>
+                      <td className="p-4 text-soft-mcm-rose font-bold">{formatCurrency(tx.amount)}</td>
                       <td className="p-4">
-                        <span className="capitalize text-sm text-cyber-gray-light">{tx.type}</span>
+                        <span className="capitalize text-sm text-soft-mcm-light">{tx.type}</span>
                       </td>
                       <td className="p-4">
                         <span
@@ -106,12 +106,12 @@ export default function AdminTransactions() {
                           {tx.status}
                         </span>
                       </td>
-                      <td className="p-4 text-cyber-gray-dark text-sm">{formatDate(tx.createdAt)}</td>
+                      <td className="p-4 text-soft-mcm-gray text-sm">{formatDate(tx.createdAt)}</td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="p-8 text-center text-cyber-gray-dark">
+                    <td colSpan="5" className="p-8 text-center text-soft-mcm-gray">
                       No transactions found
                     </td>
                   </tr>
